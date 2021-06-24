@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const hbs = require('hbs');
 const Routes = require('./routes/router'); // app routes ...
 const LinkShort = require('./models/schema');
 const app = express();
@@ -12,7 +13,8 @@ const port = process.env.PORT || 5000;
 
 // file paths ...
 const staticPath = path.join(__dirname, '../public/');
-const viewsPath = path.join(__dirname, '../templates/views');
+const viewsPath = path.join(__dirname, '../templates/views/');
+const partialsPath = path.join(__dirname, '../templates/partials/');
 
 // app middlewares ...
 app.set('view engine', 'hbs');
@@ -21,6 +23,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+hbs.registerPartials(partialsPath);
 app.use(express.static(staticPath));
 app.use(Routes);
 
