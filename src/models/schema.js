@@ -14,4 +14,7 @@ const shortner = new mongoose.Schema({
     }
 });
 
+
+shortner.index({createdAt: 1},{expireAfterSeconds: 3600});
+
 module.exports = mongoose.model('Shortner' , shortner);

@@ -109,7 +109,7 @@ body {
     width: 90vw;
     height: auto;
     min-height: 10rem;
-    max-height: 100vh;
+    max-height: 40rem;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
