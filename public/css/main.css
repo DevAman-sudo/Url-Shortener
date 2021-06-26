@@ -167,6 +167,11 @@ body {
     outline: 0;
     font-weight: bold;
     font-family: var(--ubuntu);
+    transition: 0.4s ease-in;
+}
+.copy:active {
+    color: white;
+    background: black;
 }
 
 /* second hero */

@@ -9,3 +9,8 @@ indexSignup1.addEventListener('click' , () => {
 indexSignup2.addEventListener('click' , () => {
     window.location = '/signup';
 });
+
+// index clicked function ...
+function clicked() {
+    alert('ejjjjee');
+}
