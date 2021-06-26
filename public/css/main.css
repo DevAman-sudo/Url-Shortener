@@ -9,6 +9,7 @@
 
 /* root variables */
 :root {
+    --blue: #0078D7;
     --main-background: #dde1e7;
     --big-solders: 'Big Shoulders Stencil Display', cursive;
     --ubuntu: 'Ubuntu', sans-serif;
@@ -62,19 +63,66 @@ body {
     font-size: 3.5rem;
     font-family: var(--ubuntu);
 }
+.hero h3 {
+    letter-spacing: 0.1rem;
+    word-spacing: 0.3rem;
+    margin-top: 3rem;
+    font-size: 2.5rem;
+    font-family: var(--ubuntu);
+}
 .hero p {
     font-size: 1.5rem;
     margin: 0.5rem 0;
     font-family: var(--roboto);
 }
-#index_button {
-    background: blue;
+.index_button {
+    background: var(--blue);
     color: white;
     margin: 2rem auto;
     width: 90vw;
     height: 4rem;
     border-radius: 0.5rem;
     border: none;
+    outline: 0;
     font-size: 1.5rem;
     font-family: var(--roboto);
+    transition: 0.2s ease-in-out;
+}
+.index_button:active {
+    border: 0.2rem solid white;
+    background: #3B5999;
+}
+
+/* short link div */
+.link_short {
+    width: 90vw;
+    height: auto;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin: 3rem auto;
+    box-shadow: -0.3rem -0.3rem 0.7rem #ffffff73 , 0.3rem 0.3rem 0.5rem rgba(94 , 104 , 121 , 288);
+}
+.link_short .index_button {
+    width: 80vw;
+    font-weight: bold;
+    margin: 0.5rem auto;
+    outline: 0;
+}
+.link_short .input {
+    padding: 0.5rem 1rem;
+    height: 4.5rem;
+    width: 80vw;
+    margin: 0.5rem auto;
+    border-radius: 0.5rem;
+    border: none;
+    outline: 0;
+    box-shadow: inset -0.3rem -0.3rem 0.7rem #ffffff73 , inset 0.3rem 0.3rem 0.5rem rgba(94 , 104 , 121 , 288);
+}
+
+/* second hero */
+.hero2 {
+    color: var(--main-background);
+    background: black;
 }
