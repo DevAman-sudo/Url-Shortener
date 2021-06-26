@@ -20,6 +20,13 @@
             <input class="input" name="short" type="text" placeholder="https://example.com" required />
             <button class="index_button" type="submit">Shorten</button>
         </form>
+        
+        {{#each shortUrls}}
+            <li>
+                <a href="{{this.fullurl}}"> {{this.shorturl}} </a>
+            </li>
+        {{/each}}
+            
     </div>
     
     <hero class="hero hero2">
