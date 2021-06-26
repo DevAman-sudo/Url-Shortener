@@ -16,17 +16,22 @@
     </hero>
     
     <div class="link_short">
-        <form action="/shortner" method="post" accept-charset="utf-8">
+        <form class="form" action="/shortner" method="post" accept-charset="utf-8">
             <input class="input" name="short" type="text" placeholder="https://example.com" required />
             <button class="index_button" type="submit">Shorten</button>
         </form>
         
+        <div class="column_reverse">
         <!-- database urls data -->
         {{#each shortUrls}}
-            <li>
-                <a href="{{this.fullurl}}"> {{this.shorturl}} </a>
+            <li class="data_links">
+                <a href="{{this.fullurl}}"> {{this.fullurl}} </a>
+                <hr>
+                <a href="{{this.fullurl}}"> https://localhost/{{this.shorturl}} </a>
+                <button class="copy">Copy</button>
             </li>
         {{/each}}
+        </div>
             
     </div>
     

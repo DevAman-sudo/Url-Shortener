@@ -29,6 +29,9 @@ router.post('/shortner' , async (req , res) => {
 // short id index route ...
 router.get('/:id' , async (req , res) => {
     const shortId = await Shortner.findOne({ shorturl: req.params.id });
+    
+    if (shortId == undefined) { res.status(404).send('link is undefined') }
+    
     res.redirect(Shortner.fullurl);
 });
 
