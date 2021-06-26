@@ -26,4 +26,10 @@ router.post('/shortner' , async (req , res) => {
     }
 });
 
+// short id index route ...
+router.get('/:id' , async (req , res) => {
+    const shortId = await Shortner.findOne({ shorturl: req.params.id });
+    res.redirect(Shortner.fullurl);
+});
+
 module.exports = router;
