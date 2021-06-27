@@ -1,15 +1,10 @@
 // DOM elements ...
-const indexSignup1 = document.getElementById('index_signup1');
-const indexSignup2 = document.getElementById('index_signup2');
-const errorPageButton = document.getElementById('error_page_btn');
+
 
 // index signup button location redirect ...
-indexSignup1.addEventListener('click', () => {
+function signup() {
     window.location = '/signup';
-});
-indexSignup2.addEventListener('click', () => {
-    window.location = '/signup';
-});
+}
 
 // index clicked function ...
 function clicked(data) {
@@ -23,6 +18,6 @@ function clicked(data) {
 }
 
 // error page button ...
-errorPageButton.addEventListener('click' , () => {
-    window.location = '/' ;
-});
+function errorbtn() {
+    window.location = '/';
+}
