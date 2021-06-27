@@ -3,14 +3,20 @@ const indexSignup1 = document.getElementById('index_signup1');
 const indexSignup2 = document.getElementById('index_signup2');
 
 // index signup button location redirect ...
-indexSignup1.addEventListener('click' , () => {
+indexSignup1.addEventListener('click', () => {
     window.location = '/signup';
 });
-indexSignup2.addEventListener('click' , () => {
+indexSignup2.addEventListener('click', () => {
     window.location = '/signup';
 });
 
 // index clicked function ...
-function clicked() {
-    alert('ejjjjee');
+function clicked(data) {
+    const element = document.createElement('input');
+    element.value = `http://localhost/${data}`;
+    document.body.appendChild(element);
+    element.select();
+    document.execCommand("copy");
+    document.body.removeChild(element);
+    alert('text copied');
 }
