@@ -17,7 +17,7 @@ const shortner = new mongoose.Schema({
             default: Date.now,
             }
     });
-shortner.index({ expireAt: 1 }, { expireAfterSeconds: 3600 });
+shortner.index({ expireAt: 1 }, { expireAfterHours: 1 });
 
 
     module.exports = mongoose.model('Shortner', shortner);

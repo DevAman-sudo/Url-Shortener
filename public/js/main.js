@@ -1,5 +1,5 @@
 // DOM elements ...
-
+const countdownTime = document.getElementById('countdown');
 
 // index signup button location redirect ...
 function signup() {
@@ -21,3 +21,11 @@ function clicked(data) {
 function errorbtn() {
     window.location = '/';
 }
+
+// countdown timer ...
+function countdown() {
+    let minutes = '60m';
+    
+    countdownTime.innerText = minutes;
+}
+countdown();

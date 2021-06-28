@@ -173,6 +173,10 @@ body {
     color: white;
     background: black;
 }
+.countdown {
+    color: #3B6978;
+    margin: 0.5rem 1rem;
+}
 
 /* second hero */
 .hero2 {
