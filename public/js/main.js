@@ -23,22 +23,8 @@ function errorbtn() {
 }
 
 // countdown timer ...
-function convertSeconds(seconds) {
-    let min = Math.floor(seconds / 60);
-    let sec = seconds % 60;
-    return `${min} : ${sec}`;
-}
-
-function countdown() {
-    let counter = 0;
-    let timeleft = 3600;
-
-    countdownTime.innerText = convertSeconds(timeleft - counter);
-
-    function timer() {
-        counter++;
-        countdownTime.innerText = convertSeconds(timeleft - counter);
-    }
-    setInterval(timer, 1000);
-}
-countdown();
+// function countdown() {
+//     const element = document.createElement('small');
+//     element.innerText = 54434;
+//     countdownTime.appendChild(element);
+// }
