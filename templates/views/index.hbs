@@ -29,7 +29,7 @@
                 <hr>
                 <a href="{{this.fullurl}}"> https://localhost/{{this.shorturl}} </a>
                 <small class="countdown" id="countdown">link will expires in : {{this.__ttl}} </small>
-                <button onclick="clicked(`{{this.shorturl}}`)" class="copy">Copy</button>
+                <button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
             </li>
         {{/each}}
         </div>
