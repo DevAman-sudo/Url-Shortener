@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
     const shortUrls = await Shortner.find();
     res.status(200).render('index', {
         shortUrls: shortUrls,
-        timer: '59 m'
     });
 });
 

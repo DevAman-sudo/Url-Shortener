@@ -14,7 +14,6 @@ function clicked(data) {
     element.select();
     document.execCommand("copy");
     document.body.removeChild(element);
-    alert('text copied');
 }
 
 // error page button ...
