@@ -28,6 +28,11 @@ router.post('/shortner', async (req, res) => {
     }
 });
 
+// signup route ...
+router.get('/signup' , (req , res) => {
+    res.render('signup');
+});
+
 
 // 404 error route ...
 router.get('*', (req, res) => {
