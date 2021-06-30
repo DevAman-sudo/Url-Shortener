@@ -2,7 +2,6 @@
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 const ttl = require('mongoose-ttl');
-const moment = require('moment');
 
 const shortner = new mongoose.Schema({
     fullurl: {
@@ -13,11 +12,7 @@ const shortner = new mongoose.Schema({
         type: String,
         required: true,
         default: shortid.generate
-        },
-    expire: {
-        type: Date,
-        default: function(){return moment().add(1, 'hour');} 
-    }
+        }
 });
 shortner.plugin(ttl, { ttl: 3600000, reap: false });
 
