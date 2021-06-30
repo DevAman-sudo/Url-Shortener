@@ -1,0 +1,30 @@
+<html>
+<head>
+    {{>meta}}
+    <link rel="stylesheet" href="./css/auth.css">
+</head>
+<body>
+    {{>header}}
+
+    <!-- left back arrow -->
+    <div class="back_arrow">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <img src="./img/social.png" alt="social" />
+    </div>
+    <h1 class="heading"> Log In</h1>
+
+    <form class="signup_form" action="/login" method="post" accept-charset="utf-8" >
+        <label class="lable">email address</label>
+        <input class="input" name="email" type="email" placeholder="example@gmail.com" required />
+        <label class="lable">password</label>
+        <input class="input" name="password" type="password" placeholder="password" required />
+        <button class="button" type="submit">Log In</button>
+    </form>
+    
+    <div class="others_signup">
+        <p>Create an account? <a href="/signup">signup</a></p>
+    </div>
+
+    {{>javascript}}
+</body>
+</html>

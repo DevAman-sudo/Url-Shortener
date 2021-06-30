@@ -33,6 +33,11 @@ router.get('/signup' , (req , res) => {
     res.render('signup');
 });
 
+// login route ...
+router.get('/login' , (req , res) => {
+    res.render('login');
+});
+
 
 // 404 error route ...
 router.get('*', (req, res) => {
