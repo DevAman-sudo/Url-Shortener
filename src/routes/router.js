@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Shortner = require('../models/schema');
 const User = require('../models/user');
+const auth = require('../middleware/auth');
 const router = express();
 router.set('views', path.join(__dirname, '../../templates/views'));
 

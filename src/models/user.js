@@ -77,6 +77,6 @@ userSchema.pre("save" , async function() {
     
 });
 
-const Users = new mongoose.model("User" , userSchema);
+const User = new mongoose.model("User" , userSchema);
 
-module.exports = Register;
+module.exports = User;
