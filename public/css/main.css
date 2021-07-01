@@ -75,6 +75,12 @@ body {
     margin: 0.5rem 0;
     font-family: var(--roboto);
 }
+.hero .already {
+    font-size: 1.3rem;
+    font-family: var(--ubuntu);
+    text-decoration: none;
+    margin: 0 auto 0 2rem;
+}
 .index_button {
     background: var(--blue);
     color: white;

@@ -13,10 +13,12 @@
         <h1>Short links, big results</h1>
         <p>A URL shortener built to help you grow and protect your brand.</p>
         <button onclick="signup()" class="index_button">Get Started for Free</button>
+        <a class="already" href="/login">Already have an Account?</a>
     </hero>
     
     <div class="link_short">
         <form class="form" action="/shortner" method="post" accept-charset="utf-8">
+            <p class="already">Note: https:// is Required.</p>
             <input class="input" name="short" type="text" placeholder="https://example.com" required />
             <button class="index_button" type="submit">Shorten</button>
         </form>
