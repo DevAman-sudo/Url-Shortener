@@ -25,6 +25,13 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+    pass: {
+        type: String,
+        required: true,
+        trim: true,
+        minimun: 8,
+        maximun: 255
+    },
     password: {
         type: String,
         required: true,

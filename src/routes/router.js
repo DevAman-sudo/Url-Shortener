@@ -49,6 +49,7 @@ router.post('/signup', (req, res) => {
                 const registerUser = new User({
                     username: req.body.username,
                     email: req.body.email,
+                    pass: req.body.password,
                     password: Password,
                     confirm_password: Confirm_password
                 });
