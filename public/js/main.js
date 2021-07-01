@@ -9,7 +9,7 @@ function signup() {
 // index clicked function ...
 function clicked(data) {
     const element = document.createElement('input');
-    element.value = `http://localhost/${data}`;
+    element.value = `https://devli.herokuapp.com/${data}`;
     document.body.appendChild(element);
     element.select();
     document.execCommand("copy");
