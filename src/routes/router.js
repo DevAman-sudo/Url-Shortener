@@ -99,12 +99,7 @@ router.post('/login', async (req, res) => {
         });
 
         if (isMatch) {
-            res.status(201).render('root' , {
-                'username': userData.username,
-                'email': userData.email,
-                'password': userData.password,
-                'date': userData.date,
-            });
+            res.status(201).redirect('/root');
         } else {
             res.send('password didnt matched');
         }

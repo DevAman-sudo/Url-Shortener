@@ -25,6 +25,13 @@
     border-radius: 50%;
     box-shadow: -0.3rem -0.3rem 0.7rem #ffffff73 , 0.3rem 0.3rem 0.5rem rgba(94 , 104 , 121 , 288);
 }
+.back_arrow .fa:active {
+    box-shadow: inset -0.3rem -0.3rem 0.7rem #ffffff73 , inset 0.3rem 0.3rem 0.5rem rgba(94 , 104 , 121 , 288);
+}
+.back_arrow a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
 .back_arrow img {
     width: 15rem;
     height: 10rem;

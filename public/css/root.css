@@ -1,0 +1,44 @@
+/* root variables */
+:root {
+    --blue: #0078D7;
+    --main-background: #dde1e7;
+    --big-solders: 'Big Shoulders Stencil Display', cursive;
+    --ubuntu: 'Ubuntu', sans-serif;
+    --roboto: 'Roboto', sans-serif;
+}
+
+.lappy {
+    width: 30rem;
+    height: 30rem;
+    object-fit: cover;
+    margin: 2rem auto;
+}
+
+.logout_heading {
+    font-family: var(--ubuntu);
+    letter-spacing: 0.3rem;
+    word-spacing: 0.1rem;
+    font-size: 3rem;
+    margin: 0 auto 2rem 2rem;
+}
+
+.logout {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+}
+
+.logout .logout_button {
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    width: 90vw;
+    height: 5rem;
+    border-radius: 1rem;
+    margin: 0.5rem auto;
+    text-decoration: none;
+    color: var(--blue);
+    font-family: var(--ubuntu);
+    box-shadow: -0.3rem -0.3rem 0.7rem #ffffff73 , 0.3rem 0.3rem 0.5rem rgba(94 , 104 , 121 , 288);
+}

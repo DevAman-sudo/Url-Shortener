@@ -8,7 +8,9 @@
 
     <!-- left back arrow -->
     <div class="back_arrow">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <a href="/">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
         <img src="./img/social.png" alt="social" />
     </div>
     <h1 class="heading"> Create <br> Account</h1>
@@ -20,9 +22,11 @@
         <input class="input" name="confirm_password" type="password" placeholder="comfirm_password" required />
         <button class="button" type="submit">create account</button>
     </form>
-    
+
     <div class="others_signup">
-        <p>Already have an account? <a href="/login">login</a></p>
+        <p>
+            Already have an account? <a href="/login">login</a>
+        </p>
     </div>
 
     {{>javascript}}

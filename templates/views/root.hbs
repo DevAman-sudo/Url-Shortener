@@ -1,53 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
-        <title>AUTH</title>
-        
-        <style>
-            
-            body {
-                width: 100vw;
-                min-height: 100vh;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                background: #dde1e7;
-            }
-            
-            .user_data {
-                width: 100vw;
-                min-height: 20vh;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                font-size: 0.7rem;
-            }
-            
-            .user_data p {
-                margin: 0.5rem auto;
-            }
-            
-        </style>
-        
+        {{>meta}}
+        <link rel="stylesheet" href="./css/root.css" />
     </head>
     <body>
+        {{>header}}
         
-        <h1>logged in as root</h1>
-
-        <div class="user_data">
-            <p> {{ username }} </p>
-            <p> {{ email }} </p>
-            <p> {{ date }} </p>
+        <img class="lappy" src="./img/lappy.png" alt="lappy" />
+        <h1 class="logout_heading">This page is <br> on Development.</h1>
+        <div class="logout">
+            <a class="logout_button" href="/logout">Logout</a>
+            <a class="logout_button" href="logoutAll">Logout from all Devices</a>
         </div>
         
-        <a href="/logout"> log out</a>
-        <br>
-        <a href="/logoutall"> log out from all devices</a>
-        
+        {{javascript}}
     </body>
 </html>
