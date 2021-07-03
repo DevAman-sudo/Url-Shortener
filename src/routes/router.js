@@ -56,7 +56,7 @@ router.post('/signup', (req, res) => {
 
                 const registered = await registerUser.save();
 
-                res.status(201).redirect('/login');
+                res.status(201).redirect('/auth/login');
             } else {
                 res.status(201).send('password didn`t matched');
             }
@@ -71,7 +71,7 @@ router.post('/signup', (req, res) => {
 
 
 // login route ...
-router.get('/login' , (req , res) => {
+router.get('/user/login' , (req , res) => {
     res.render('login');
 });
 
@@ -100,7 +100,7 @@ router.post('/login', async (req, res) => {
         });
 
         if (isMatch) {
-            res.status(201).redirect('/root');
+            res.status(201).redirect(`/user/${userData._id}`);
         } else {
             res.send('password didnt matched');
         }
@@ -112,7 +112,7 @@ router.post('/login', async (req, res) => {
 });
 
 // root user auth route ...
-router.get('/root' , auth , (req , res) => {
+router.get('/user/:id' , auth , (req , res) => {
     res.status(200).render('root');
 });
 
@@ -128,7 +128,7 @@ router.get('/logout' , auth , async (req , res) => {
         // removing cookie from client machine
         res.clearCookie("jwt");
         await req.user.save();
-        res.render('login');
+        res.redirect('/user/login');
         
     } catch (error) {
         res.status(500).send(`logout route error => ${error}`);
@@ -145,7 +145,7 @@ router.get('/logoutall' , auth , async (req , res) => {
         // removing cookie from client machine
         res.clearCookie("jwt");
         await req.user.save();
-        res.render('login');
+        res.redirect('/user/login');
         
     } catch (error) {
         res.status(500).send(`logout route error => ${error}`);

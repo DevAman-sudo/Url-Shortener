@@ -1,10 +1,36 @@
 <html>
 <head>
-    {{>meta}}
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- local css file -->
+    <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/auth.css">
+
+    <!-- favicon and title -->
+    <title>DevLink</title>
+
 </head>
 <body>
-    {{>header}}
+
+    <!-- header section -->
+    <header class="header">
+        <p class="brand">
+            devlink
+        </p>
+        <img class="logo" src="./img/logo.png" alt="logo" />
+    </header>
 
     <!-- left back arrow -->
     <div class="back_arrow">
@@ -25,10 +51,11 @@
 
     <div class="others_signup">
         <p>
-            Already have an account? <a href="/login">login</a>
+            Already have an account? <a href="/user/login">login</a>
         </p>
     </div>
 
-    {{>javascript}}
+    <!-- scripts -->
+    <script src="./js/main.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

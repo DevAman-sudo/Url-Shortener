@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{>meta}}
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- local css file -->
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <!-- favicon and title -->
+    <title>DevLink</title>
+
 </head>
 <body>
-    
+
     <!-- header section -->
-    {{>header}}
-    
+    <header class="header">
+        <p class="brand">
+            devlink
+        </p>
+        <img class="logo" src="./img/logo.png" alt="logo" />
+    </header>
+
     <hero class="hero">
         <img class="hero_img" src="./img/hero.png" alt="laptop" />
         <h1>Short links, big results</h1>
-        <p>A URL shortener built to help you grow and protect your brand.</p>
+        <p>
+            A URL shortener built to help you grow and protect your brand.
+        </p>
         <button onclick="signup()" class="index_button">Get Started for Free</button>
         <a class="already" href="/login">Already have an Account?</a>
     </hero>
-    
+
     <div class="link_short">
         <form class="form" action="/shortner" method="post" accept-charset="utf-8">
-            <p class="already">Note: https:// is Required.</p>
+            <p class="already">
+                Note: https:// is Required.
+            </p>
             <input class="input" name="short" type="text" placeholder="https://example.com" required />
             <button class="index_button" type="submit">Shorten</button>
         </form>
-        
+
         <div class="column_reverse">
-        <!-- database urls data -->
-        {{#each shortUrls}}
+            <!-- database urls data -->
+            {{#each shortUrls}}
             <li class="data_links">
                 <a href="{{this.fullurl}}"> {{this.fullurl}} </a>
                 <hr>
@@ -33,17 +61,18 @@
                 <small class="countdown" id="countdown">link will expires in : {{this.__ttl}} </small>
                 <button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
             </li>
-        {{/each}}
+            {{/each}}
         </div>
-            
+
     </div>
-    
+
     <hero class="hero hero2">
         <h1>Want to customize and track your links?</h1>
         <button onclick="signup()" class="index_button">sign up for free</button>
         <h3>More than a link shortener.</h3>
     </hero>
 
-{{>javascript}}
+    <!-- scripts -->
+    <script src="./js/main.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

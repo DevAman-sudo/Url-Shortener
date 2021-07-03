@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {{>meta}}
-        <link rel="stylesheet" href="./css/root.css" />
-    </head>
-    <body>
-        {{>header}}
-        
-        <img class="lappy" src="./img/lappy.png" alt="lappy" />
-        <h1 class="logout_heading">This page is <br> on Development.</h1>
-        <div class="logout">
-            <a class="logout_button" href="/logout">Logout</a>
-            <a class="logout_button" href="logoutAll">Logout from all Devices</a>
-        </div>
-        
-        {{javascript}}
-    </body>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- local css file -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/root.css" />
+
+    <!-- favicon and title -->
+    <title>DevLink</title>
+
+</head>
+<body>
+
+    <!-- header section -->
+    <header class="header">
+        <p class="brand">
+            devlink
+        </p>
+        <img class="logo" src="../img/logo.png" alt="logo" />
+    </header>
+
+    <img class="lappy" src="../img/lappy.png" alt="lappy" />
+    <h1 class="logout_heading">This page is <br> on Development.</h1>
+    <div class="logout">
+        <a class="logout_button" href="/logout">Logout</a>
+        <a class="logout_button" href="/logoutall">Logout from all Devices</a>
+    </div>
+
+    <!-- scripts -->
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
 </html>
