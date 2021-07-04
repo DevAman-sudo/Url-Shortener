@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
+const shortid = require('shortid');
 
 const userSchema = new mongoose.Schema({
-    
+
     username: {
         type: String,
         required: true,
@@ -20,7 +21,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         maximun: 255,
         validate(value) {
-            if ( !validator.isEmail(value) ) {
+            if (!validator.isEmail(value)) {
                 throw new Error("Email is Invalid");
             }
         }
@@ -49,41 +50,56 @@ const userSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
+        },
+        tokens: [{
+            token: {
+                type: String,
+                required: true
+            }
+        }],
+        url: {
+            fullurl: {
+                type: String,
+            },
+            shorturl: {
+                type: String,
+                required: true,
+                default: shortid.generate
+                }
+            }
+
+        });
+
+    // generating auth token middleware
+    userSchema.methods.generateAuthToken = async function () {
+        try {
+
+            const token = jwt.sign({
+                _id: this._id.toString()
+            },
+                process.env.JWT_KEY);
+            this.tokens = this.tokens.concat({
+                token: token
+            });
+            await this.save();
+            return token;
+
+        } catch (error) {
+            res.send(error);
+            console.log(`Error occured while generating jwt => ${error}`);
         }
-    }]
-    
-});
+    };
 
-// generating auth token middleware
-userSchema.methods.generateAuthToken = async function () {
-    try {
-        
-        const token = jwt.sign({ _id : this._id.toString() } , process.env.JWT_KEY);
-        this.tokens = this.tokens.concat({token : token});
-        await this.save();
-        return token;
-        
-    } catch (error) {
-        res.send(error);
-        console.log(`Error occured while generating jwt => ${error}`);
-    }
-};
+    // hashing password middleware
+    userSchema.pre("save", async function() {
 
-// hashing password middleware
-userSchema.pre("save" , async function() {
-    
-    if (this.isModified("password")) {
-        this.password = await bcrypt.hash(this.password , 10);
-        this.confirm_password = await bcrypt.hash(this.confirm_password , 10);
-    }
-    
-});
+        if (this.isModified("password")) {
+            this.password = await bcrypt.hash(this.password, 10);
+            this.confirm_password = await bcrypt.hash(this.confirm_password, 10);
+        }
 
-const User = new mongoose.model("User" , userSchema);
+    });
 
-module.exports = User;
+    const User = new mongoose.model("User", userSchema);
+
+    module.exports = User;

@@ -39,6 +39,30 @@
         <a class="logout_button" href="/logout">Logout</a>
         <a class="logout_button" href="/logoutall">Logout from all Devices</a>
     </div>
+    
+     <div class="link_short">
+        <form class="form" action="/user/root" method="post" accept-charset="utf-8">
+            <p class="already">
+                Note: https:// is Required.
+            </p>
+            <input class="input" name="short" type="text" placeholder="https://example.com" required />
+            <button class="index_button" type="submit">Shorten</button>
+        </form>
+
+        <div class="column_reverse">
+            <!-- database urls data -->
+            {{#each shortUrls}}
+            <li class="data_links">
+                <a href="{{this.fullurl}}"> {{this.fullurl}} </a>
+                <hr>
+                <a href="{{this.fullurl}}">devli.herokuapp.com/{{this.shorturl}} </a>
+                <small class="countdown" id="countdown">link will expires in : {{this.__ttl}} </small>
+                <button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
+            </li>
+            {{/each}}
+        </div>
+
+    </div>
 
     <!-- scripts -->
     <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>

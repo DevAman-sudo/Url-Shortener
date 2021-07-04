@@ -125,6 +125,19 @@ router.get('/user/:id' , auth , async (req , res) => {
     }
 });
 
+// root page post route ...
+router.post('/user/root' , auth , async (req , res) => {
+    try {
+        
+        // console.log(req.params.id);
+        console.log(req.body.short);
+        res.redirect('/user/login');
+        
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 // logout routes ...
 router.get('/logout' , auth , async (req , res) => {
     try {
