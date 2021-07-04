@@ -112,8 +112,17 @@ router.post('/login', async (req, res) => {
 });
 
 // root user auth route ...
-router.get('/user/:id' , auth , (req , res) => {
-    res.status(200).render('root');
+router.get('/user/:id' , auth , async (req , res) => {
+    try {
+
+        const id = await User.findOne({ _id: req.params.id });
+        console.log(id.username);
+
+        res.status(200).render('root');
+        
+    } catch (error) {
+        res.status(500).send(error);
+    }
 });
 
 // logout routes ...
