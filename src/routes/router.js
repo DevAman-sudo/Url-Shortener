@@ -56,7 +56,7 @@ router.post('/signup', (req, res) => {
 
                 const registered = await registerUser.save();
 
-                res.status(201).redirect('/auth/login');
+                res.status(201).redirect('/user/login');
             } else {
                 res.status(201).send('password didn`t matched');
             }

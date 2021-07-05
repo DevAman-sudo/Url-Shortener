@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         unique: true,
+        lowercase: true,
         maximun: 255,
         validate(value) {
             if (!validator.isEmail(value)) {
