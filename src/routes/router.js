@@ -107,7 +107,7 @@ router.post('/login', async (req, res) => {
 
 	} catch (error) {
 		res.status(400).send('invalid login details');
-		console.log(`error occured => ${error}`);
+		console.log(`login error occured => ${error}`);
 	}
 });
 
@@ -128,10 +128,12 @@ router.get('/user/:id', auth, async (req, res) => {
 });
 
 // root page post route ...
-router.post('/userpost', auth, async (req, res) => {
+router.post('/userpost', async (req, res) => {
 	try {
-		
+		const obj = JSON.parse(JSON.stringify(req.body));
+		console.log(obj);
 		const doc = await User.findOne({ email: req.body.id });
+		console.log(doc);
 
 		User.updateOne(
 			{
@@ -146,6 +148,7 @@ router.post('/userpost', auth, async (req, res) => {
 			}, {
 				new: true, upsert: true
 			}).exec();
+			console.log('udjsjs');
 
 		res.redirect(`/user/${doc._id}`);
 
