@@ -131,9 +131,7 @@ router.get('/user/:id', auth, async (req, res) => {
 router.post('/userpost', async (req, res) => {
 	try {
 		const obj = JSON.parse(JSON.stringify(req.body));
-		console.log(obj);
-		const doc = await User.findOne({ email: req.body.id });
-		console.log(doc);
+		const doc = await User.findOne({ _id: obj.id });
 
 		User.updateOne(
 			{
@@ -148,7 +146,6 @@ router.post('/userpost', async (req, res) => {
 			}, {
 				new: true, upsert: true
 			}).exec();
-			console.log('udjsjs');
 
 		res.redirect(`/user/${doc._id}`);
 
