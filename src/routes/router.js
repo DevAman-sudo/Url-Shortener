@@ -118,6 +118,7 @@ router.get('/user/:id', auth, async (req, res) => {
 		const doc = await User.findOne({ _id: req.params.id });
 
 		res.status(200).render('root' , {
+			id: doc._id,
 			doc: doc.urls
 		});
 
@@ -127,10 +128,10 @@ router.get('/user/:id', auth, async (req, res) => {
 });
 
 // root page post route ...
-router.post('/user/root', auth, async (req, res) => {
+router.post('/userpost', auth, async (req, res) => {
 	try {
 		
-		const doc = await User.findOne({ email: 'devaman.net@gmail.com' });
+		const doc = await User.findOne({ email: req.body.id });
 
 		User.updateOne(
 			{
@@ -146,7 +147,7 @@ router.post('/user/root', auth, async (req, res) => {
 				new: true, upsert: true
 			}).exec();
 
-		res.redirect(`/user/${doc._id}}`);
+		res.redirect(`/user/${doc._id}`);
 
 	} catch (error) {
 		res.status(500).send(error);
