@@ -32,37 +32,40 @@
 		</p>
 		<img class="logo" src="../img/logo.png" alt="logo" />
 	</header>
+	<!-- left back arrow -->
+	<div class="back_arrow">
+		<a href="/logout">
+			<i class="fa fa-arrow-left" aria-hidden="true"></i>
+		</a>
+	</div>
+	<hr class="hr">
+
+	<form class="root_form" action="/userpost" method="post" accept-charset="utf-8">
+		<p class="already">
+			Note: https:// is Required.
+		</p>
+		<input class="input" name="short" type="text" placeholder="https://example.com" required />
+		<input type="hidden" name="id" value="{{id}}" />
+		<button class="root_button" type="submit">Shorten</button>
+	</form>
+
+	<!-- database urls data -->
+	{{#each doc}}
+	<div class="root_links">
+		<li class="root_data_links">
+			<a href="{{this.fullurl}}"> {{this.fullurl}} </a>
+			<hr>
+			<a href="{{this.fullurl}}">devli.herokuapp.com/{{this.shorturl}} </a>
+			<button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
+		</li>
+	</div>
+	{{/each}}
 
 	<img class="lappy" src="../img/lappy.png" alt="lappy" />
-	<h1 class="logout_heading">This page is <br> on Development.</h1>
+
 	<div class="logout">
 		<a class="logout_button" href="/logout">Logout</a>
 		<a class="logout_button" href="/logoutall">Logout from all Devices</a>
-	</div>
-
-	<div class="link_short">
-		<form class="form" action="/userpost" method="post" accept-charset="utf-8">
-			<p class="already">
-				Note: https:// is Required.
-			</p>
-			<input class="input" name="short" type="text" placeholder="https://example.com" required />
-			<input type="hidden" name="id" value="{{id}}"/>
-			<button class="index_button" type="submit">Shorten</button>
-		</form>
-
-		<div class="column_reverse">
-			<!-- database urls data -->
-			{{#each doc}}
-			<li class="data_links">
-				<a href="{{this.fullurl}}"> {{this.fullurl}} </a>
-				<hr>
-				<a href="{{this.fullurl}}">devli.herokuapp.com/{{this.shorturl}} </a>
-				<small class="countdown" id="countdown">link will expires in : </small>
-				<button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
-			</li>
-			{{/each}}
-		</div>
-
 	</div>
 
 	<!-- scripts -->

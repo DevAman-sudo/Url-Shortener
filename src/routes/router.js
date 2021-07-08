@@ -94,7 +94,6 @@ router.post('/login', async (req, res) => {
 
 		// storing user cookie
 		res.cookie("jwt", token, {
-			expires: new Date(Date.now() + 600000),
 			httpOnly: true,
 			// secure: true
 		});
@@ -115,9 +114,11 @@ router.post('/login', async (req, res) => {
 router.get('/user/:id', auth, async (req, res) => {
 	try {
 
-		const doc = await User.findOne({ _id: req.params.id });
+		const doc = await User.findOne({
+			_id: req.params.id
+		});
 
-		res.status(200).render('root' , {
+		res.status(200).render('root', {
 			id: doc._id,
 			doc: doc.urls
 		});
@@ -131,11 +132,13 @@ router.get('/user/:id', auth, async (req, res) => {
 router.post('/userpost', async (req, res) => {
 	try {
 		const obj = JSON.parse(JSON.stringify(req.body));
-		const doc = await User.findOne({ _id: obj.id });
+		const doc = await User.findOne({
+			_id: obj.id
+		});
 
 		User.updateOne(
 			{
-				email: 'devaman.net@gmail.com'
+				_id: doc._id
 			},
 			{
 				$addToSet: {
