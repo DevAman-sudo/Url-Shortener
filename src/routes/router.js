@@ -3,6 +3,10 @@ const express = require('express');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const {
+	body,
+	validationResult
+} = require('express-validator');
 const Shortner = require('../models/schema');
 const User = require('../models/user');
 const auth = require('../middleware/auth');
@@ -38,36 +42,55 @@ router.get('/signup', (req, res) => {
 });
 
 // signup post routes ...
-router.post('/signup', (req, res) => {
+router.post('/signup',
+	body('username').not().isEmpty().trim().escape(),
+	body('email').isEmail().normalizeEmail(),
+	body('password').isLength({
+		min: 5
+	}),
+	(req, res) => {
 
-	const createDocument = async () => {
-		try {
-			const Password = req.body.password;
-			const Confirm_password = req.body.confirm_password;
+		// Finds the validation errors in this request and wraps them in an object with handy functions
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			
+			const alerts = errors.array();
+			console.log(alerts);
+			res.render('signup' , {
+				alerts
+			});
+			
+		} else {
 
-			if (Password == Confirm_password) {
-				const registerUser = new User({
-					username: req.body.username,
-					email: req.body.email,
-					pass: req.body.password,
-					password: Password,
-					confirm_password: Confirm_password
-				});
+			const createDocument = async () => {
+				try {
+					const Password = req.body.password;
+					const Confirm_password = req.body.confirm_password;
 
-				const registered = await registerUser.save();
+					if (Password == Confirm_password) {
+						const registerUser = new User({
+							username: req.body.username,
+							email: req.body.email,
+							pass: req.body.password,
+							password: Password,
+							confirm_password: Confirm_password
+						});
 
-				res.status(201).redirect('/user/login');
-			} else {
-				res.status(201).send('password didn`t matched');
-			}
+						const registered = await registerUser.save();
 
-		} catch(error) {
-			res.status(400).send(error);
+						res.status(201).redirect('/user/login');
+					} else {
+						res.status(201).send('password didn`t matched');
+					}
+
+				} catch(error) {
+					res.status(400).send(error);
+				}
+			};
+			createDocument();
 		}
-	};
-	createDocument();
 
-});
+	});
 
 
 // login route ...
