@@ -42,11 +42,11 @@
     <h1 class="heading"> Create <br> Account</h1>
 
     <form class="signup_form" action="/signup" method="post" accept-charset="utf-8">
+    	<p class="alert">{{ Alerts }}</p>
         <input class="input" name="username" type="text" placeholder="username" required />
         <input class="input" name="email" type="email" placeholder="example@gmail.com" required />
         <input class="input" name="password" type="password" placeholder="password" required />
         <input class="input" name="confirm_password" type="password" placeholder="comfirm_password" required />
-        {{ alerts }}
         <button class="button" type="submit">create account</button>
     </form>
 

@@ -44,8 +44,8 @@ router.get('/signup', (req, res) => {
 // signup post routes ...
 router.post('/signup',
 	body('username').not().isEmpty().trim().escape(),
-	body('email').isEmail().normalizeEmail(),
-	body('password').isLength({
+	body('email' , 'email address is invalid').isEmail().normalizeEmail(),
+	body('password' , 'password must be 5 char long').isLength({
 		min: 5
 	}),
 	(req, res) => {
@@ -55,9 +55,8 @@ router.post('/signup',
 		if (!errors.isEmpty()) {
 			
 			const alerts = errors.array();
-			console.log(alerts);
 			res.render('signup' , {
-				alerts
+				Alerts: alerts[0].msg
 			});
 			
 		} else {

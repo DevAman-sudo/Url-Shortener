@@ -28,6 +28,13 @@ body {
     background: var(--main-background);
 }
 
+/* alert message */
+.alert {
+	font-size: 1.3rem;
+	color: #E53935;
+	font-family: var(--ubuntu);
+}
+
 /* header */
 .header {
     width: 100vw;
