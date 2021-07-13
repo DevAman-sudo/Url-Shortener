@@ -61,34 +61,44 @@ router.post('/signup',
 
 		} else {
 
-			const createDocument = async () => {
-				try {
-					const Password = req.body.password;
-					const Confirm_password = req.body.confirm_password;
+			const doc = User.findOne({
+				email: req.body.email
+			});
+			if (doc) {
+				res.render('login', {
+					Alerts: 'user already exist please login'
+				});
+			} else {
 
-					if (Password == Confirm_password) {
-						const registerUser = new User({
-							username: req.body.username,
-							email: req.body.email,
-							pass: req.body.password,
-							password: Password,
-							confirm_password: Confirm_password
-						});
+				const createDocument = async () => {
+					try {
+						const Password = req.body.password;
+						const Confirm_password = req.body.confirm_password;
 
-						const registered = await registerUser.save();
+						if (Password == Confirm_password) {
+							const registerUser = new User({
+								username: req.body.username,
+								email: req.body.email,
+								pass: req.body.password,
+								password: Password,
+								confirm_password: Confirm_password
+							});
 
-						res.status(201).redirect('/user/login');
-					} else {
-						res.status(201).render('signup', {
-							Alerts: 'password didn`t matched'
-						});
+							const registered = await registerUser.save();
+
+							res.status(201).redirect('/user/login');
+						} else {
+							res.status(201).render('signup', {
+								Alerts: 'password didn`t matched'
+							});
+						}
+
+					} catch(error) {
+						res.status(400).send(error);
 					}
-
-				} catch(error) {
-					res.status(400).send(error);
-				}
-			};
-			createDocument();
+				};
+				createDocument();
+			}
 		}
 
 	});
@@ -150,7 +160,7 @@ router.post('/login',
 		} catch (error) {
 			res.render('login', {
 				Alerts: 'invalid login details'
-				
+
 			});
 			console.log(`login error occured => ${error}`);
 		}
