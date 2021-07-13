@@ -79,7 +79,9 @@ router.post('/signup',
 
 						res.status(201).redirect('/user/login');
 					} else {
-						res.status(201).send('password didn`t matched');
+						res.status(201).render('signup', {
+							Alerts: 'password didn`t matched'
+						});
 					}
 
 				} catch(error) {
