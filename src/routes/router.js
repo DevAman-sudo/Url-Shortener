@@ -44,8 +44,8 @@ router.get('/signup', (req, res) => {
 // signup post routes ...
 router.post('/signup',
 	body('username').not().isEmpty().trim().escape(),
-	body('email' , 'email address is invalid').isEmail().normalizeEmail(),
-	body('password' , 'password must be 5 char long').isLength({
+	body('email', 'email address is invalid').isEmail().normalizeEmail(),
+	body('password', 'password must be 5 char long').isLength({
 		min: 5
 	}),
 	(req, res) => {
@@ -53,12 +53,12 @@ router.post('/signup',
 		// Finds the validation errors in this request and wraps them in an object with handy functions
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			
+
 			const alerts = errors.array();
-			res.render('signup' , {
+			res.render('signup', {
 				Alerts: alerts[0].msg
 			});
-			
+
 		} else {
 
 			const createDocument = async () => {
@@ -98,39 +98,56 @@ router.get('/user/login', (req, res) => {
 });
 
 // login post routes ...
-router.post('/login', async (req, res) => {
-	try {
+router.post('/login',
+	body('email', 'email address is invalid').isEmail().normalizeEmail(),
+	body('password', 'password must be 5 char long').isLength({
+		min: 5
+	}),
+	async (req, res) => {
+		try {
 
-		const email = req.body.email;
-		const password = req.body.password;
+			// Finds the validation errors in this request and wraps them in an object with handy functions
+			const errors = validationResult(req);
+			if (!errors.isEmpty()) {
 
-		const userData = await User.findOne({
-			email: email
-		});
+				const alerts = errors.array();
+				res.render('login', {
+					Alerts: alerts[0].msg
+				});
 
-		// comparing hashed password with user password
-		const isMatch = await bcrypt.compare(password, userData.password);
+			} else {
 
-		// JWT auth tokens
-		const token = await userData.generateAuthToken();
+				const email = req.body.email;
+				const password = req.body.password;
 
-		// storing user cookie
-		res.cookie("jwt", token, {
-			httpOnly: true,
-			// secure: true
-		});
+				const userData = await User.findOne({
+					email: email
+				});
 
-		if (isMatch) {
-			res.status(201).redirect(`/user/${userData._id}`);
-		} else {
-			res.send('password didnt matched');
+				// comparing hashed password with user password
+				const isMatch = await bcrypt.compare(password, userData.password);
+
+				// JWT auth tokens
+				const token = await userData.generateAuthToken();
+
+				// storing user cookie
+				res.cookie("jwt", token, {
+					httpOnly: true,
+					// secure: true
+				});
+
+				if (isMatch) {
+					res.status(201).redirect(`/user/${userData._id}`);
+				} else {
+					res.send('password didnt matched');
+				}
+			}
+
+		} catch (error) {
+			res.status(400).send('invalid login details');
+			console.log(`login error occured => ${error}`);
 		}
-
-	} catch (error) {
-		res.status(400).send('invalid login details');
-		console.log(`login error occured => ${error}`);
-	}
-});
+	});
 
 // root user auth route ...
 router.get('/user/:id', auth, async (req, res) => {
