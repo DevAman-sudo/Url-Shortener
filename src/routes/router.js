@@ -139,12 +139,17 @@ router.post('/login',
 				if (isMatch) {
 					res.status(201).redirect(`/user/${userData._id}`);
 				} else {
-					res.send('password didnt matched');
+					res.render('login', {
+						Alerts: 'Password didn`t Matched'
+					});
 				}
 			}
 
 		} catch (error) {
-			res.status(400).send('invalid login details');
+			res.render('login', {
+				Alerts: 'invalid login details'
+				
+			});
 			console.log(`login error occured => ${error}`);
 		}
 	});
