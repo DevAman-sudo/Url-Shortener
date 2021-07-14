@@ -48,7 +48,8 @@ router.post('/signup',
 	body('password', 'password must be 5 char long').isLength({
 		min: 5
 	}),
-	(req, res) => {
+	async (req, res) => {
+		try {
 
 		// Finds the validation errors in this request and wraps them in an object with handy functions
 		const errors = validationResult(req);
@@ -61,7 +62,7 @@ router.post('/signup',
 
 		} else {
 
-			const doc = User.findOne({
+			const doc = await User.findOne({
 				email: req.body.email
 			});
 			if (doc) {
@@ -99,6 +100,10 @@ router.post('/signup',
 				};
 				createDocument();
 			}
+		}
+		
+		} catch (error) {
+			console.log(`signup route error => ${error}`);
 		}
 
 	});
