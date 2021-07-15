@@ -1,5 +1,9 @@
 // DOM elements ...
 const countdownTime = document.getElementById('countdown');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('cpassword');
+const eyeButton = document.querySelector('.eye1');
+const eyeButtonA = document.querySelector('.eye2');
 
 // index signup button location redirect ...
 function signup() {
@@ -20,3 +24,21 @@ function clicked(data) {
 function errorbtn() {
     window.location = '/';
 }
+
+// auth eye button ...
+eyeButton.addEventListener('click' , (event) => {
+	if (password.type == 'password') {
+		password.setAttribute('type' , 'text');
+	} else {
+		password.setAttribute('type' , 'password');
+	}
+	eyeButton.classList.toggle('fa-eye-slash');
+});
+eyeButtonA.addEventListener('click' , (event) => {
+	if (confirmPassword.type == 'password') {
+		confirmPassword.setAttribute('type' , 'text');
+	} else {
+		confirmPassword.setAttribute('type' , 'password');
+	}
+	eyeButtonA.classList.toggle('fa-eye-slash');
+});

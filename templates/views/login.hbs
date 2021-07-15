@@ -1,62 +1,67 @@
 <html>
 <head>
 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
 
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+	<!-- google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<!-- font awesome -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <!-- local css file -->
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/auth.css">
+	<!-- local css file -->
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/auth.css">
 
-    <!-- favicon and title -->
-    <title>DevLink</title>
+	<!-- favicon and title -->
+	<title>DevLink</title>
 </head>
 <body>
 
-    <!-- header section -->
-    <header class="header">
-        <p class="brand">
-            devlink
-        </p>
-        <img class="logo" src="../img/logo.png" alt="logo" />
-    </header>
+	<!-- header section -->
+	<header class="header">
+		<p class="brand">
+			devlink
+		</p>
+		<img class="logo" src="../img/logo.png" alt="logo" />
+	</header>
 
-    <!-- left back arrow -->
-    <div class="back_arrow">
-        <a href="/signup">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-        </a>
-        <img src="../img/social.png" alt="social" />
-    </div>
-    <h1 class="heading"> Log In</h1>
+	<!-- left back arrow -->
+	<div class="back_arrow">
+		<a href="/signup">
+			<i class="fa fa-arrow-left" aria-hidden="true"></i>
+		</a>
+		<img src="../img/social.png" alt="social" />
+	</div>
+	<h1 class="heading"> Log In</h1>
 
-    <form class="signup_form" action="/login" method="post" accept-charset="utf-8">
-        {{message}}
-        <p class="alert">{{Alerts}}</p>
-        <label class="lable">email address</label>
-        <input class="input passkey" name="email" type="email" placeholder="example@gmail.com" required />
-        <label class="lable">password</label>
-        <input class="input passkey" name="password" type="password" placeholder="password" required />
-        <button class="button" type="submit">Log In</button>
-    </form>
+	<form class="signup_form" action="/login" method="post" accept-charset="utf-8">
+		{{message}}
+		<p class="alert">
+			{{Alerts}}
+		</p>
+		<label class="lable">email address</label>
+		<input class="input passkey" name="email" type="email" placeholder="example@gmail.com" required />
+		<label class="lable">password</label>
+		<div class="passkey">
+			<input id="password" class="input passkey" name="password" type="password" placeholder="password" required />
+			<i class="fa fa-eye eye eye1" aria-hidden="true"></i>
+		</div>
+		<button class="button" type="submit">Log In</button>
+	</form>
 
-    <div class="others_signup">
-        <p>
-            Create an account? <a href="/signup">signup</a>
-        </p>
-    </div>
+	<div class="others_signup">
+		<p>
+			Create an account? <a href="/signup">signup</a>
+		</p>
+	</div>
 
-    <!-- scripts -->
-    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+	<!-- scripts -->
+	<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
