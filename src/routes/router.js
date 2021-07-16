@@ -255,7 +255,7 @@ router.get('/logoutall', auth, async (req, res) => {
 });
 
 // 404 error route ...
-router.get('/user/*', (req, res) => {
+router.get('*', (req, res) => {
 	res.render('error');
 });
 
