@@ -56,7 +56,10 @@
 			<a href="{{this.fullurl}}"> {{this.fullurl}} </a>
 			<hr>
 			<a href="{{this.fullurl}}">devli.herokuapp.com/{{this.shorturl}} </a>
-			<button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
+			<div class="each_button">
+				<button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
+				<button id="delete" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+			</div>
 		</li>
 	</div>
 	{{/each}}

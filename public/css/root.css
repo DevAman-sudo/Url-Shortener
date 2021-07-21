@@ -166,8 +166,12 @@
 	color: black;
 }
 
+.root_links .each_button {
+	display: flex;
+}
+
 .root_links .copy {
-	width: 90%;
+	width: 70%;
 	height: 4rem;
 	margin: 0.5rem auto 1rem auto;
 	border: none;
@@ -176,4 +180,19 @@
 	font-weight: bold;
 	font-family: var(--ubuntu);
 	transition: 0.2s ease-in;
+}
+
+.root_links .delete {
+	width: 15%;
+	height: 4rem;
+	margin: 0.5rem auto 1rem auto;
+	border: none;
+	border-radius: 0.4rem;
+	outline: 0;
+	font-size: 1.7rem;
+	font-weight: bold;
+	font-family: var(--ubuntu);
+	transition: 0.2s ease-in;
+	background: #E53935;
+	color: #f1f1f2;
 }
