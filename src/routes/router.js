@@ -51,57 +51,57 @@ router.post('/signup',
 	async (req, res) => {
 		try {
 
-		// Finds the validation errors in this request and wraps them in an object with handy functions
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
+			// Finds the validation errors in this request and wraps them in an object with handy functions
+			const errors = validationResult(req);
+			if (!errors.isEmpty()) {
 
-			const alerts = errors.array();
-			res.render('signup', {
-				Alerts: alerts[0].msg
-			});
-
-		} else {
-
-			const doc = await User.findOne({
-				email: req.body.email
-			});
-			if (doc) {
-				res.render('login', {
-					Alerts: 'user already exist please login'
+				const alerts = errors.array();
+				res.render('signup', {
+					Alerts: alerts[0].msg
 				});
+
 			} else {
 
-				const createDocument = async () => {
-					try {
-						const Password = req.body.password;
-						const Confirm_password = req.body.confirm_password;
+				const doc = await User.findOne({
+					email: req.body.email
+				});
+				if (doc) {
+					res.render('login', {
+						Alerts: 'user already exist please login'
+					});
+				} else {
 
-						if (Password == Confirm_password) {
-							const registerUser = new User({
-								username: req.body.username,
-								email: req.body.email,
-								pass: req.body.password,
-								password: Password,
-								confirm_password: Confirm_password
-							});
+					const createDocument = async () => {
+						try {
+							const Password = req.body.password;
+							const Confirm_password = req.body.confirm_password;
 
-							const registered = await registerUser.save();
+							if (Password == Confirm_password) {
+								const registerUser = new User({
+									username: req.body.username,
+									email: req.body.email,
+									pass: req.body.password,
+									password: Password,
+									confirm_password: Confirm_password
+								});
 
-							res.status(201).redirect('/user/login');
-						} else {
-							res.status(201).render('signup', {
-								Alerts: 'password didn`t matched'
-							});
+								const registered = await registerUser.save();
+
+								res.status(201).redirect('/user/login');
+							} else {
+								res.status(201).render('signup', {
+									Alerts: 'password didn`t matched'
+								});
+							}
+
+						} catch(error) {
+							res.status(400).send(error);
 						}
-
-					} catch(error) {
-						res.status(400).send(error);
-					}
-				};
-				createDocument();
+					};
+					createDocument();
+				}
 			}
-		}
-		
+
 		} catch (error) {
 			console.log(`signup route error => ${error}`);
 		}
@@ -219,17 +219,33 @@ router.post('/userpost', async (req, res) => {
 });
 
 // url deletation route ...
-router.post('/deleted' , async (req , res) => {
+router.post('/deleted', async (req, res) => {
 	try {
-		
+
 		const doc = await User.findOne({
 			_id: req.body.id
 		});
-		
-		
-		
-		res.redirect(`/user/${req.body.id}`);
-		
+
+		User.updateOne({
+			_id: req.body.id
+		}, {
+			$pull: {
+				urls : {
+				_id: req.body.subid
+				}
+			}
+		}, function(err, campground) {
+			if (err) {
+				console.log(err);
+				res.send('dskwkeksks');
+			} else {
+				console.log("successComment has been deleted!");
+				res.redirect(`/user/${req.body.id}`);
+			}
+
+		});
+
+
 	} catch (error) {
 		res.status(500).send(`deletation route error => ${error}`);
 	}
