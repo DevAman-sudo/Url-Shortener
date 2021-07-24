@@ -20,6 +20,11 @@ function clicked(data) {
     document.body.removeChild(element);
 }
 
+// delete button functionality / root page
+function deleted() {
+	
+}
+
 // error page button ...
 function errorbtn() {
     window.location = '/';

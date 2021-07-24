@@ -58,7 +58,11 @@
 			<a href="{{this.fullurl}}">devli.herokuapp.com/{{this.shorturl}} </a>
 			<div class="each_button">
 				<button onclick="clicked(`{{this.shorturl}}`)" id="copy" class="copy">Copy</button>
-				<button id="delete" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				<form action="/deleted" method="post" accept-charset="utf-8">
+					<input type="hidden" name="id" value="{{../id}}" />
+					<input type="hidden" name="subid" value="{{id}}" />
+					<button type="submit" id="delete" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				</form>
 			</div>
 		</li>
 	</div>

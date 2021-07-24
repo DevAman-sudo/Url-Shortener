@@ -218,6 +218,23 @@ router.post('/userpost', async (req, res) => {
 	}
 });
 
+// url deletation route ...
+router.post('/deleted' , async (req , res) => {
+	try {
+		
+		const doc = await User.findOne({
+			_id: req.body.id
+		});
+		
+		
+		
+		res.redirect(`/user/${req.body.id}`);
+		
+	} catch (error) {
+		res.status(500).send(`deletation route error => ${error}`);
+	}
+});
+
 // logout routes ...
 router.get('/logout', auth, async (req, res) => {
 	try {

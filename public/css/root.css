@@ -168,6 +168,7 @@
 
 .root_links .each_button {
 	display: flex;
+	flex-direction: column;
 }
 
 .root_links .copy {
