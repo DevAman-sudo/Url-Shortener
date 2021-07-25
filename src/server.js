@@ -28,7 +28,7 @@ app.use(express.static(staticPath));
 app.use(Routes);
 
 // mongodb connection ...
-mongoose.connect(`mongodb+srv://DevAman:${process.env.PASS}@cluster0.tlrz1.mongodb.net/demo?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://DevAman:${process.env.PASS}@cluster0.tlrz1.mongodb.net/devlink?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
